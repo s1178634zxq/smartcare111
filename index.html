@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SmartCare VR 智慧康养护理人才培训平台：结合 2D 情景图谱与可切换第一、第三视角的 3D 护理训练，连接知识、实践、评估与人文关怀。">
+  <meta name="theme-color" content="#123f3b">
+  <title>SmartCare VR｜2D + 3D 智慧康养情景培训</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <script type="module" src="./scene.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 6 9 6-9 6Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z M4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3ZM9 3v15M15 6v15"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.5-5 3-7 8-7s7.5 2 8 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 4v6h6M5.5 16a8 8 0 1 0 0-8"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.8a5.5 5.5 0 0 0-7.8 0L12 6.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 22l8.8-8.4a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4ZM20 4h-4a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h4Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home" aria-label="SmartCare VR 首页">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44"><path d="M22 37S7 28 7 17a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-15 20-15 20Z"/><path d="M12 22h6l3-6 4 12 3-6h5"/></svg></span>
+      <span><strong>SmartCare <em>VR</em></strong><small>智慧康养情景培训</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="主导航">
+      <a href="#about">项目背景</a>
+      <a href="#training">情景训练</a>
+      <a href="#journey">学习闭环</a>
+      <a href="#courses">课程体系</a>
+      <a href="#assessment">能力评估</a>
+      <a href="#implementation">实施路径</a>
+    </nav>
+    <a class="header-cta" href="#training">进入训练台 <svg><use href="#i-arrow"/></svg></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="打开导航菜单"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="移动端导航">
+    <a href="#about">01 项目背景</a><a href="#training">02 情景训练</a><a href="#journey">03 学习闭环</a><a href="#courses">04 课程体系</a><a href="#assessment">05 能力评估</a><a href="#implementation">06 实施路径</a>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero" id="home">
+      <div class="hero-orb orb-a" aria-hidden="true"></div><div class="hero-orb orb-b" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow light"><span></span> AI × VR × WORKFORCE DEVELOPMENT</p>
+          <h1>让每一次模拟，<br>都成为真正<br><em>护理的准备。</em></h1>
+          <p class="hero-subtitle">把 2D 的清晰判断与 3D 的沉浸实践结合起来，在安全、可重复的情景中，培养护理技能、应急判断、沟通关怀与数字素养。</p>
+          <div class="hero-actions">
+            <a class="button button-coral" href="#training" data-set-view="3d">进入 3D 情景训练 <svg><use href="#i-arrow"/></svg></a>
+            <a class="button button-glass" href="#training" data-set-view="2d"><svg><use href="#i-map"/></svg> 先看 2D 情景图</a>
+          </div>
+          <div class="hero-principles"><span><svg><use href="#i-check"/></svg> 低风险重复练习</span><span><svg><use href="#i-check"/></svg> 每一步都有解释</span><span><svg><use href="#i-check"/></svg> 技术不替代专业判断</span></div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-photo-wrap">
+            <img src="./assets/hero-cn-care.jpg" alt="护理人员牵着老人的手，给予陪伴与支持" class="hero-photo">
+            <div class="photo-top"><span><i></i> PERSON-CENTERED CARE</span><b>护理现场 · 01</b></div>
+            <div class="photo-caption"><small>技术负责创造练习机会</small><strong>人负责理解每一次需要。</strong></div>
+          </div>
+          <div class="floating-card mentor-float"><img src="./assets/avatar-mentor.jpg" alt="AI 智能导师人物示意"><span><small>AI MENTOR · 教学辅助</small><strong>先观察，再行动</strong></span><i></i></div>
+          <div class="floating-card mode-float"><span class="mode-icon"><svg><use href="#i-cube"/></svg></span><span><small>DUAL MODE LEARNING</small><strong>2D 任务图谱 ↔ 3D 情景演练</strong></span></div>
+        </div>
+      </div>
+      <div class="container hero-feature-row reveal">
+        <article><b>01</b><span><strong>AI 虚拟老人</strong><small>多状态、多性格的情景反馈</small></span></article>
+        <article><b>02</b><span><strong>双视角沉浸训练</strong><small>第一视角练习，第三视角复盘</small></span></article>
+        <article><b>03</b><span><strong>可解释能力评估</strong><small>分数对应具体行为与改进建议</small></span></article>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">01 · PROJECT CONTEXT</p><h2>不是多一项技术，<br>而是多一种<span>成长方式。</span></h2></div><p>面对人口老龄化与护理人才缺口，传统课堂很难反复呈现高风险、强沟通的现场。SmartCare VR 补足的是实践、反馈与个性化支持，而不是取代教师和真实照护经验。</p></div>
+        <div class="challenge-grid reveal">
+          <article><span>01</span><h3>实践机会有限</h3><p>真实场景涉及安全与隐私，跌倒、突发不适等情境难以频繁演练。</p></article>
+          <article><span>02</span><h3>反馈不够具体</h3><p>“做错了”并不等于知道错在哪里；训练需要对应到可观察的行为。</p></article>
+          <article><span>03</span><h3>能力结构改变</h3><p>未来护理员还需要数字工具应用、信息管理与隐私保护能力。</p></article>
+        </div>
+        <div class="comparison reveal">
+          <div class="comparison-old"><p class="eyebrow">TRADITIONAL TRAINING</p><h3>从“学过了”出发</h3><ul><li>课堂讲授与视频学习</li><li>有限的实际操作机会</li><li>统一进度与单一理论考核</li></ul></div>
+          <div class="comparison-arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+          <div class="comparison-new"><p class="eyebrow">SMARTCARE TRAINING</p><h3>到“真的会做”落地</h3><ul><li>2D 建立判断顺序，3D 练习现场行动</li><li>错误分支即时解释，可重复复盘</li><li>知识、应急、沟通、数字与伦理综合评估</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section system-section" id="system">
+      <div class="container">
+        <div class="section-heading compact reveal"><div><p class="eyebrow">TRAINING SYSTEM</p><h2>四位一体，围绕人的能力协作。</h2></div><p>AI 在虚拟场景中扮演老人与导师，VR 提供可行动的练习环境，评估把过程转化为下一步学习建议。</p></div>
+        <div class="system-grid reveal">
+          <article><span class="system-no">01</span><div class="system-icon">AI</div><h3>智能虚拟老人</h3><p>模拟健康状况、性格、沟通方式与认知差异，让学员练习回应真实需要。</p><small>情景生成 · 对话反馈</small></article>
+          <article><span class="system-no">02</span><div class="system-icon"><svg><use href="#i-book"/></svg></div><h3>AI 智能导师</h3><p>在关键节点提供知识提示和错误解释，明确教学辅助与人工复核边界。</p><small>学习建议 · 错误提醒</small></article>
+          <article><span class="system-no">03</span><div class="system-icon"><svg><use href="#i-cube"/></svg></div><h3>2D + 3D 情景训练</h3><p>2D 看清空间与流程，3D 在第一、第三视角之间切换，练习并复盘。</p><small>安全模拟 · 重复练习</small></article>
+          <article><span class="system-no">04</span><div class="system-icon"><svg><use href="#i-shield"/></svg></div><h3>智能能力评估</h3><p>把选择对应到能力维度，说明得分依据，并推荐需要重新练习的环节。</p><small>能力画像 · 个性推荐</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section training-section" id="training">
+      <div class="container wide">
+        <div class="section-heading training-heading reveal"><div><p class="eyebrow light">02 · IMMERSIVE TRAINING LAB</p><h2>2D 看清流程，<br><em>3D 走进现场。</em></h2></div><p>四个情景共享同一套任务与评估逻辑。先观察现场，再做出判断；第一视角练习临场行动，第三视角检查位置、距离与照护关系。</p></div>
+
+        <div class="scenario-tabs reveal" role="tablist" aria-label="选择训练情景">
+          <button class="scenario-tab is-active" type="button" data-scenario="fall" role="tab" aria-selected="true"><span>01</span><strong>老人跌倒处理</strong><small>应急判断 · 约 8 分钟</small></button>
+          <button class="scenario-tab" type="button" data-scenario="acute" role="tab" aria-selected="false"><span>02</span><strong>突发健康状况</strong><small>观察求助 · 约 8 分钟</small></button>
+          <button class="scenario-tab" type="button" data-scenario="dementia" role="tab" aria-selected="false"><span>03</span><strong>失智症情绪沟通</strong><small>共情沟通 · 约 10 分钟</small></button>
+          <button class="scenario-tab" type="button" data-scenario="daily" role="tab" aria-selected="false"><span>04</span><strong>日常生活照护</strong><small>安全尊重 · 约 12 分钟</small></button>
+        </div>
+
+        <div class="training-shell reveal">
+          <div class="training-stage-column">
+            <div class="training-toolbar">
+              <div class="scene-title"><i></i><span><small id="sceneCode">SCENARIO 01</small><strong id="sceneTitle">老人跌倒处理</strong></span></div>
+              <div class="toolbar-controls">
+                <div class="segmented" aria-label="二维或三维视图">
+                  <button type="button" data-view="2d" aria-pressed="false"><svg><use href="#i-map"/></svg> 2D 情景</button>
+                  <button type="button" data-view="3d" class="is-active" aria-pressed="true"><svg><use href="#i-cube"/></svg> 3D 沉浸</button>
+                </div>
+                <div class="segmented camera-segmented" id="cameraControls" aria-label="三维相机视角">
+                  <button type="button" data-camera="first" aria-pressed="false"><svg><use href="#i-eye"/></svg> 第一视角</button>
+                  <button type="button" data-camera="third" class="is-active" aria-pressed="true"><svg><use href="#i-person"/></svg> 第三视角</button>
+                </div>
+              </div>
+            </div>
+            <div class="stage-wrap" id="stageWrap">
+              <div class="scene-container" id="sceneContainer" aria-label="可交互的三维养老护理房间"></div>
+              <div class="map-view" id="mapView" hidden></div>
+              <div class="scene-loading" id="sceneLoading"><span class="loader"></span><strong>正在布置护理情景…</strong><small>本地 3D 引擎加载中</small></div>
+              <div class="scene-fallback" id="sceneFallback" hidden><strong>当前设备未能启动 3D</strong><p>你仍可使用完整的 2D 情景训练与评估。</p><button type="button" class="button button-coral" id="fallback2d">切换到 2D</button></div>
+              <div class="stage-status"><span id="viewBadge"><svg><use href="#i-cube"/></svg> 3D LIVE</span><span id="cameraBadge">第三视角 · 按 V 切换</span></div>
+              <div class="crosshair" id="crosshair" aria-hidden="true"></div>
+              <div class="elder-dialogue" id="elderDialogue"><span>陈奶奶 · 虚拟老人</span><p id="elderLine">“我……腿有点疼，先别动我。”</p></div>
+              <div class="stage-observation" id="stageObservation" aria-live="polite"><small>现场观察</small><span>点击发光标记，或选择“观察附近线索”。</span></div>
+            </div>
+            <div class="stage-footer">
+              <div class="control-hints"><span><kbd>WASD</kbd> 移动</span><span><kbd>拖动</kbd> 环顾</span><span><kbd>滚轮</kbd> 第三视角缩放</span><span><kbd>V</kbd> 切换视角</span></div>
+              <div class="stage-actions"><button type="button" id="observeButton"><svg><use href="#i-eye"/></svg> 观察附近线索</button><button type="button" id="resetCamera"><svg><use href="#i-reset"/></svg> 重置视角</button></div>
+              <div class="move-pad" aria-label="触屏移动控制"><button data-move="forward" aria-label="向前">↑</button><div><button data-move="left" aria-label="向左">←</button><button data-move="backward" aria-label="向后">↓</button><button data-move="right" aria-label="向右">→</button></div></div>
+            </div>
+          </div>
+
+          <aside class="mission-panel" aria-label="情景任务与反馈">
+            <div class="mission-top"><span>训练任务</span><b id="missionScore">0 / 4</b></div>
+            <div class="mission-progress"><i id="missionProgress"></i></div>
+            <div id="missionContent" aria-live="polite"></div>
+            <div class="mentor-note"><span class="mentor-avatar"><img src="./assets/avatar-mentor.jpg" alt=""></span><div><small>AI 导师 · 规则驱动示范</small><p id="mentorTip">先确保现场安全，再评估意识与疼痛。不要立即扶起。</p></div></div>
+            <button class="text-button restart-scenario" id="restartScenario" type="button"><svg><use href="#i-reset"/></svg> 重新开始本情景</button>
+          </aside>
+        </div>
+        <p class="prototype-note reveal"><svg><use href="#i-shield"/></svg> 本项目为课程交互原型，不连接商业 AI API 或真实 VR 硬件。情景用于教学演示，不替代现实急救规范、机构流程或专业护理判断。</p>
+      </div>
+    </section>
+
+    <section class="section journey-section" id="journey">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">03 · LEARNING JOURNEY</p><h2>六个阶段，<br>形成一个<span>学习闭环。</span></h2></div><p>不是把 AI 与 VR 分别摆放，而是让档案、推荐、情景互动、任务表现与能力评估彼此连接，再把结果送回下一轮训练。</p></div>
+        <div class="journey-console reveal">
+          <div class="journey-console-top"><span><i></i> SMARTCARE INTELLIGENT TRAINING OS</span><div><button id="journeyPlay" type="button"><svg><use href="#i-play"/></svg> 播放</button><button id="journeyPause" type="button" disabled><svg><use href="#i-pause"/></svg> 暂停</button><button id="journeyReplay" type="button"><svg><use href="#i-reset"/></svg> 重播</button></div></div>
+          <div class="journey-steps" id="journeySteps"></div>
+          <div class="journey-detail"><div><p class="eyebrow" id="journeyLabel">STEP 01 / 06</p><h3 id="journeyTitle">护理员登录系统</h3><p id="journeyDescription">建立学习档案，查看个人进度与本次训练任务，为能力评估建立清晰起点。</p></div><div class="journey-metric"><span id="journeyMetric">LEARNER PROFILE</span><strong id="journeyValue">学习档案已建立</strong><small id="journeyEvidence">证据：课程记录与任务起点</small></div></div>
+          <div class="journey-progress"><i id="journeyProgress"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section courses-section" id="courses">
+      <div class="container">
+        <div class="section-heading compact reveal"><div><p class="eyebrow">04 · COURSE SYSTEM</p><h2>五项能力，一条复合成长路径。</h2></div><p>每门课程都连接知识学习、情景任务和评价证据，避免网站沦为单纯的技术介绍。</p></div>
+        <div class="course-filters reveal" aria-label="课程分类"><button class="is-active" data-filter="all">全部课程</button><button data-filter="care">照护核心</button><button data-filter="special">专项能力</button><button data-filter="digital">数字与伦理</button></div>
+        <div class="course-grid reveal" id="courseGrid"></div>
+      </div>
+    </section>
+
+    <section class="section assessment-section" id="assessment">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">05 · SMART ASSESSMENT</p><h2>让成长被看见，<br>也让建议<span>有依据。</span></h2></div><p>演示画像用于说明评估结构；你完成情景训练后，本页会加入本地成绩与具体复盘建议。所有数据仅保存在当前浏览器。</p></div>
+        <div class="assessment-grid reveal">
+          <article class="profile-card">
+            <div class="profile-head"><img src="./assets/avatar-learner.jpg" alt="示范学员林同学"><div><small>DEMO LEARNER</small><h3>林同学 · 学员培训仪表板</h3><p>养老护理员 · 第 8 周</p></div><span>示范</span></div>
+            <div class="profile-stats"><div><strong>76<small>%</small></strong><span>总体学习进度</span></div><div><strong>3<small>/5</small></strong><span>已完成课程</span></div><div><strong id="completedScenarioCount">0<small>/4</small></strong><span>本地情景完成</span></div></div>
+            <div class="recommendation"><small>NEXT BEST ACTION · 可解释推荐</small><strong id="recommendationTitle">先完成一次跌倒情景训练</strong><p id="recommendationText">建立“观察—评估—呼救—记录”的行为基线，再决定下一步。</p></div>
+          </article>
+          <article class="radar-card"><div class="card-head"><div><small>CAPABILITY PROFILE</small><h3>六维能力画像</h3></div><span>演示 + 本地训练</span></div><svg id="abilityRadar" viewBox="0 0 420 340" role="img" aria-label="护理知识、应急处理、沟通关怀、数字技能、学习进度、职业伦理六维能力雷达图"></svg><div class="radar-legend"><span><i></i> 当前能力</span><small>评分为教学演示，不代表真实学员记录</small></div></article>
+          <article class="growth-card"><div class="card-head"><div><small>8-WEEK GROWTH</small><h3>八周技能成长</h3></div><strong>+30%</strong></div><div class="growth-chart" aria-label="第 1 周到第 8 周技能成长柱状图"><div style="--h:34%"><span>W1</span></div><div style="--h:42%"><span>W2</span></div><div style="--h:47%"><span>W3</span></div><div style="--h:55%"><span>W4</span></div><div style="--h:61%"><span>W5</span></div><div style="--h:72%"><span>W6</span></div><div style="--h:79%"><span>W7</span></div><div class="current" style="--h:90%"><span>W8</span></div></div><p>应急处理与沟通关怀提升明显。成长曲线为初代网站的演示数据。</p></article>
+        </div>
+        <div class="history-card reveal"><div class="card-head"><div><small>LOCAL DEBRIEF</small><h3>我的情景训练复盘</h3></div><button class="button button-outline small" id="downloadReport" type="button"><svg><use href="#i-download"/></svg> 下载复盘摘要</button></div><div id="trainingHistory" class="training-history"></div></div>
+        <div class="career-path reveal"><div class="career-intro"><p class="eyebrow">CAREER PATHWAY</p><h3>能力成长，连接职业发展。</h3><p>从基础照护到数字化协作，再到培训与服务管理，每一级都需要真实实践与导师监督。</p></div><div class="career-steps"><div><span>01</span><strong>初级养老护理员</strong><small>基础护理知识与技能</small></div><div><span>02</span><strong>数字化护理员</strong><small>AI 工具与智能设备应用</small></div><div><span>03</span><strong>智慧康养护理员</strong><small>人机协作与综合判断</small></div><div><span>04</span><strong>培训导师 / 管理专员</strong><small>培训指导、技术与服务管理</small></div></div></div>
+      </div>
+    </section>
+
+    <section class="section implementation-section" id="implementation">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">06 · IMPLEMENTATION</p><h2>从课程原型到真实试点，<br><span>分阶段验证。</span></h2></div><p>技术上线不等于培训有效。每一阶段都要同时验证学习效果、专业安全、使用门槛与隐私风险。</p></div>
+        <div class="timeline reveal">
+          <article><span>0—6 个月</span><small>PHASE 01</small><h3>平台开发与课程共建</h3><p>完成课程框架、对话脚本、四类情景原型与评估指标，由护理专家审核关键内容。</p><b>课程共建 · 原型开发 · 安全审查</b></article>
+          <article><span>7—12 个月</span><small>PHASE 02</small><h3>养老机构小规模试点</h3><p>以小组方式开展基础培训、2D/3D 情景练习与前后测，记录学习效果和使用体验。</p><b>机构试点 · 小班培训 · 效果测量</b></article>
+          <article><span>13—18 个月</span><small>PHASE 03</small><h3>系统与教学迭代</h3><p>依据学员、教师和机构反馈优化难度、反馈与适老化操作，复核 AI 内容边界。</p><b>反馈研究 · 内容优化 · 隐私复核</b></article>
+          <article><span>19 个月起</span><small>PHASE 04</small><h3>合作推广与持续发展</h3><p>形成可复制的课程与培训服务，连接养老机构、职业培训机构、院校与技术伙伴。</p><b>师资培训 · 课程资源库 · 区域合作</b></article>
+        </div>
+        <div class="risk-grid reveal"><article><svg><use href="#i-book"/></svg><h3>专业内容人工审核</h3><p>AI 反馈仅作教学辅助，关键护理流程由专业人员复核。</p></article><article><svg><use href="#i-person"/></svg><h3>降低数字使用门槛</h3><p>保留 2D 替代模式、清晰提示与基础数字技能培训。</p></article><article><svg><use href="#i-shield"/></svg><h3>隐私与数据最小化</h3><p>原型仅用合成数据；真实系统需知情同意、权限与加密。</p></article><article><svg><use href="#i-heart"/></svg><h3>虚拟训练连接真实实践</h3><p>模拟不能取代真实照护经验，必须衔接导师监督实践。</p></article></div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-inner reveal"><div><p class="eyebrow light">TECHNOLOGY FOR HUMAN CARE</p><h2>技术向前一步，<br>照护的温度不能退后一步。</h2></div><a class="button button-coral" href="#training">开始一次情景训练 <svg><use href="#i-arrow"/></svg></a></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><div class="brand footer-brand"><span class="brand-mark"><svg viewBox="0 0 44 44"><path d="M22 37S7 28 7 17a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-15 20-15 20Z"/><path d="M12 22h6l3-6 4 12 3-6h5"/></svg></span><span><strong>SmartCare <em>VR</em></strong><small>以技术连接知识、实践与人文关怀</small></span></div><p>课程项目交互原型 · 2026<br>基于初代网站与 6141 小组作业框架升级</p><a href="#home">返回首页 ↑</a></div></footer>
+
+  <dialog class="course-dialog" id="courseDialog"><button class="dialog-close" id="dialogClose" aria-label="关闭课程详情">×</button><div id="dialogContent"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
